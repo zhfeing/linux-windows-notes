@@ -1,0 +1,4 @@
+sudo gedit /etc/fstab
+e.g. /dev/sdb1 /media/C ntfs defaults 0 0
+
+

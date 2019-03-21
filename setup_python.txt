@@ -1,0 +1,21 @@
+0. preperation
+sudo apt-get install -y gcc make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev libgdbm-dev
+
+1. setup python3.7
+
+sudo mkdir /usr/python3
+cd Python-3.7.2
+./configure --enable-optimizations --prefix=/usr/local/python3.7 --enable-shared
+make -j8
+sudo make install
+
+
+2. replace old python
+
+update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+update-alternatives --install /usr/bin/python python /usr/bin/python3.4 2
+
+sudo update-alternatives --config python
+
+3. replace pip in the same way
+4. enjoy it! :)

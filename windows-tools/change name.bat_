@@ -1,0 +1,10 @@
+@echo off
+setlocal enabledelayedexpansion
+for  %%x in (*) do (
+    if not "%%x"=="change name.bat" (
+        set /a sum+=1
+        rename "%%x" "!sum!.jpg"
+     
+)
+)
+pause

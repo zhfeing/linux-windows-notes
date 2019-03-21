@@ -1,0 +1,5 @@
+sudo add-apt-repository ppa:alexeftimie/ppa   //其为ppa源软件，故需先添加ppa源  
+sudo apt-get update  
+sudo apt-get install indicator-sysmonitor 
+    sudo apt-get install dstat  
+    sudo apt-get install acpi  

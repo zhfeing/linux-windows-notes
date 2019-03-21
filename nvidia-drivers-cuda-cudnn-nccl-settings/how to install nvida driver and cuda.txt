@@ -1,0 +1,93 @@
+1. first disable security boot: 
+	sudo mokutil --enable-validation
+	然后reboot
+2. setup the nvida 375 driver via "system//software & update"
+3. reboot, if there is no erro, then you can enjoy the nvida driver by enter
+	nvida-settings
+4. run cuda.run, with out opengl, and do not choose with nivida driver
+5. sudo gedit /etc/profile
+and enter 
+	export PATH=/usr/local/cuda-8.0/bin:$PATH
+	export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64$LD_LIBRARY_PATH
+6. sudo reboot
+7. test 
+	cd /usr/local/cuda-8.0/samples/1_Utilities/deviceQuery
+	sudo make
+	./deviceQuery
+8.if something wrong:
+	1)写入到 ~/.bashrc 的尾部
+		export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+		export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+	2)
+		sudo gedit /etc/profile
+	add this:
+		export PATH=/usr/local/cuda/bin:$PATH
+	3)
+		sudo gedit /etc/ld.so.conf.d/cuda.conf
+	add this:
+		/usr/local/cuda/lib64
+	4)
+		sudo ldconfig
+9. set up cudnn
+	1)
+		sudo cp cudnn.h /usr/local/cuda/include/    #复制头文件
+	2)
+		sudo cp lib* /usr/local/cuda/lib64/    #复制动态链接库
+		cd /usr/local/cuda/lib64/
+		sudo rm -rf libcudnn.so libcudnn.so.5    #删除原有动态文件
+		sudo ln -s libcudnn.so.5.0.5 libcudnn.so.5  #生成软衔接
+		sudo ln -s libcudnn.so.5 libcudnn.so      #生成软链接
+
+################################################################################################
+another way
+	cd 下载/ 
+	tar zxvf cudnn-8.0-linux-x64-v5.1.tgz 
+解压在下载目录下产生一个cuda目录 
+	cd cuda/include/ 
+	sudo cp cudnn.h /usr/local/cuda/include/ 复制头文件 
+	cd ../lib64 打开lib64目录 
+	sudo cp lib* /usr/local/cuda/lib64/ 复制库文件 
+	sudo chmod a+r /usr/local/cuda/include/cudnn.h/usr/local/cuda/lib64/libcudnn*给所有用户增加这些文件的读权限 
+
+
+建立软链接
+
+终端输入 
+	cd /usr/local/cuda/lib64/ 
+	sudo rm -rf libcudnn.so libcudnn.so.5 
+	sudo ln -s libcudnn.so.5.1.5 libcudnn.so.5 
+	sudo ln -s libcudnn.so.5 libcudnn.so 
+设置环境变量，终端输入 
+	sudo gedit /etc/profile 
+在末尾加入 
+	PATH=/usr/local/cuda/bin:$PATH 
+	export PATH 
+保存后，创建链接文件 
+	sudo vim /etc/ld.so.conf.d/cuda.conf 
+按a进入插入模式，增加下面一行 
+	/usr/local/cuda/lib64 
+按esc退出插入模式，按:wq保存退出 
+最后在终端输入sudo ldconfig使链接生效 
+
+
+cuda Samples测试
+
+打开CUDA 8.0 Samples默认安装路径，终端输入 
+	cd /home/pawn/NVIDIA_CUDA-8.0_Samples （pawn是我的用户名） 
+	sudo make all -j4 （4核） 
+出现“unsupported GNU version! gcc versions later than 5.3 are not supported!”的错误，这是由于GCC版本过高，在终端输入 
+	cd /usr/local/cuda-8.0/include 
+	sudo cp host_config.h host_config.h.bak 
+	sudo gedit host_config.h 
+ctrl+f寻找有“5.3”的地方，只有一处，如下 
+# if __GNUC__ > 5 || (__GNUC__ == 5 && __GNUC_MINOR__ > 3) 
+#error -- unsupported GNU version! gcc versions later than 5.3 are not supported! 
+将两个5改成6，即 
+#if __GNUC__ > 6 || (__GNUC__ == 6 && __GNUC_MINOR__ > 3) 
+保存退出，继续在终端输入 
+cd /home/pawn/NVIDIA_CUDA-8.0_Samples （pawn是我的用户名） 
+	sudo make all -j4 （4核） 
+完成后继续向终端输入 
+	cd bin/x86_64/linux/release 
+	./deviceQuery 
+

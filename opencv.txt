@@ -1,0 +1,82 @@
+﻿sudo apt-get update
+sudo apt-get upgrade
+
+[compiler] 
+sudo apt-get install build-essential
+[required] 
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev --fix-missing
+sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
+sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+sudo apt-get install libxvidcore-dev libx264-dev
+sudo apt-get install libgtk-3-dev
+sudo apt-get install libatlas-base-dev gfortran
+
+[optional] 
+
+
+sudo add-apt-repository "deb http://mirrors.aliyun.com/ubuntu/ xenial-security main"
+sudo apt update
+sudo apt install libjasper1 libjasper-dev
+sudo apt install libgl1*
+sudo apt-get install libtbb2 libtbb-dev  libpng-dev libtiff-dev  libdc1394-22-dev
+sudo apt-get install libcanberra-gtk-module
+
+libjpeg8-dev
+
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+
+or cmake-gui
+
+    set full path to OpenCV source code, e.g. /home/user/opencv
+    set full path to <cmake_build_dir>, e.g. /home/user/opencv/build
+    set optional parameters
+    run: “Configure”
+    run: “Generate”
+
+
+
+PYTHON2(3)_EXECUTABLE = <path to python>
+PYTHON_INCLUDE_DIR = /usr/include/python<version>
+PYTHON_INCLUDE_DIR2 = /usr/include/x86_64-linux-gnu/python<version>
+PYTHON_LIBRARY = /usr/lib/x86_64-linux-gnu/libpython<version>.so
+PYTHON2(3)_NUMPY_INCLUDE_DIRS = /usr/lib/python<version>/dist-packages/numpy/core/include/
+
+make -j7 # runs 7 jobs in parallel
+
+cd ~/opencv/build/doc/
+make -j7 doxygen
+
+sudo make install
+
+
+
+
+PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3
+
+
+
+
+
+
+
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/home/disk3/zhf/zhf-envir/opencv3.4 ..
+
+
+
+
+
+
+
+
+
+if it shows that python libraries is No, check python version and that of its lib it must be the same
+
+
+
+
+
+
+
+
+
+-DQt5Concurrent_DIR:PATH="/media/zhfeing/Programme/linux_program/Qt5/5.11.3/gcc_64/lib/cmake/Qt5Concurrent" -DQt5Test_DIR:PATH="/media/zhfeing/Programme/linux_program/Qt5/5.11.3/gcc_64/lib/cmake/Qt5Test" -DPYTHON3_LIBRARY:FILEPATH="/media/zhfeing/Programme/linux_program/anaconda3/lib/libpython3.7m.so" -DBUILD_opencv_world:BOOL="0" -DOPENCV_ENABLE_NONFREE:BOOL="1" -D_qt5gui_OPENGL_INCLUDE_DIR:PATH="_qt5gui_OPENGL_INCLUDE_DIR-NOTFOUND" -DPYTHON3_PACKAGES_PATH:PATH="/media/zhfeing/Programme/linux_program/anaconda3/lib/python3.7/site-packages" -DPYTHON3_EXECUTABLE:FILEPATH="/media/zhfeing/Programme/linux_program/anaconda3/bin/python3" -DQt5Widgets_DIR:PATH="/media/zhfeing/Programme/linux_program/Qt5/5.11.3/gcc_64/lib/cmake/Qt5Widgets" -DOPENCV_EXTRA_MODULES_PATH:PATH="/home/zhfeing/opencv_contrib-4.0.1/modules" -DPYTHON3_INCLUDE_DIR2:PATH="" -DOPENCV_PYTHON3_VERSION:BOOL="1" -DQt5Core_DIR:PATH="/media/zhfeing/Programme/linux_program/Qt5/5.11.3/gcc_64/lib/cmake/Qt5Core" -DINSTALL_PYTHON_EXAMPLES:BOOL="1" -DPYTHON3_INCLUDE_DIR:PATH="/media/zhfeing/Programme/linux_program/anaconda3/include/python3.7m" -DWITH_QT:BOOL="1" -DPYTHON3_NUMPY_INCLUDE_DIRS:PATH="/media/zhfeing/Programme/linux_program/anaconda3/lib/python3.7/site-packages/numpy/core/include" -DQt5Gui_DIR:PATH="/media/zhfeing/Programme/linux_program/Qt5/5.11.3/gcc_64/lib/cmake/Qt5Gui" -DQt5OpenGL_DIR:PATH="/media/zhfeing/Programme/linux_program/Qt5/5.11.3/gcc_64/lib/cmake/Qt5OpenGL" 

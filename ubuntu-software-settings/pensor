@@ -1,0 +1,18 @@
+sudo apt-get install lm-sensors hddtemp 
+sudo sensors-detect 
+回复"yes"即可。 
+重启或通过以下命令加载 sensor需要的模块。 
+sudo service module-init-tools start 
+sudo apt-get install psensor 
+
+或者通过stable PPA安装 
+
+sudo add-apt-repository ppa:jfi/ppa 
+sudo apt-get update 
+sudo apt-get install psensor 
+
+另外还有个unstable Ubuntu PPA，可能会有bug 
+
+sudo add-apt-repository ppa:jfi/psensor-unstable 
+sudo apt-get update 
+sudo apt-get install psensor

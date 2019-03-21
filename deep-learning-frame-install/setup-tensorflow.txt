@@ -1,0 +1,63 @@
+1. setup nccl -- libs to support compute on mulity GPUs
+
+sudo dpkg -i nccl-repo-<version>.deb
+sudo apt-key add /var/nccl-repo-2.4.2-ga-cuda10.0/7fa2af80.pub
+sudo apt-get update
+sudo apt install libnccl2=2.4.2-1+cuda10.0 libnccl-dev=2.4.2-1+cuda10.0
+
+
+2. setup Bazel -- tools for compile TensorFlow required version: 0.15.0 !!!
+
+sudo apt-get install pkg-config zip g++ zlib1g-dev unzip
+
+Next, download the Bazel binary installer named bazel-<version>-installer-linux-x86_64.sh from https://github.com/bazelbuild/bazel/releases
+
+chmod +x bazel-<version>-installer-linux-x86_64.sh
+./bazel-<version>-installer-linux-x86_64.sh --user
+
+sudo apt-get install openjdk-8-jdk
+
+
+3. activate python virtual envirorment
+sudo pip install -U sudo pip install virtualenv virtualenvwrapper
+mkdir tensorflow-build && cd tensorflow-build/
+virtualenv tensorflow # create tensorflow virtual envirorment
+source tensorflow/bin/activate  # activate tensorflow virrtual envirorment
+pip install -U pip six numpy wheel mock
+pip install -U keras_applications==1.0.6 --no-deps
+pip install -U keras_preprocessing==1.0.5 --no-deps
+
+
+git checkout branch_name  # r1.9, r1.10, etc.
+
+./configure
+
+Preconfigured Bazel build configs. You can use any of the below by adding "--config=<>" to your build command. See tools/bazel.rc for more details.
+	--config=mkl         	# Build with MKL support.
+	--config=monolithic  	# Config for mostly static monolithic build.
+	--config=gdr         	# Build with GDR support.
+	--config=verbs       	# Build with libverbs support.
+	--config=ngraph      	# Build with Intel nGraph support.
+
+
+
+
+bazel test -c opt -- //tensorflow/... -//tensorflow/compiler/... -//tensorflow/contrib/lite/...
+bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+
+Bazel build options
+Building TensorFlow from source can use a lot of RAM. If your system is memory-constrained, limit Bazel's RAM usage with: --local_resources 2048,.5,1.0.
+
+The official TensorFlow packages are built with GCC 4 and use the older ABI. For GCC 5 and later, make your build compatible with the older ABI using: --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0". ABI compatibility ensures that custom ops built against the official TensorFlow package continue to work with the GCC 5 built package.
+
+Build the package
+The bazel build command creates an executable named build_pip_package—this is the program that builds the pip package. For example, the following builds a .whl package in the /tmp/tensorflow_pkg directory:
+
+./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+
+Although it is possible to build both CUDA and non-CUDA configurations under the same source tree, it's recommended to run bazel clean when switching between these two configurations in the same source tree.
+
+Install the package
+The filename of the generated .whl file depends on the TensorFlow version and your platform. Use pip install to install the package, for example:
+
+pip install /tmp/tensorflow_pkg/tensorflow-version-tags.whl

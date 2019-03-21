@@ -1,0 +1,6 @@
+
+anaconda换源：
+制定清华的源：
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+有资源显示源地址：
+conda config --set show_channel_urls yes

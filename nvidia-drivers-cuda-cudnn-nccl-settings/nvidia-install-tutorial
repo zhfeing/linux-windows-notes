@@ -1,0 +1,22 @@
+1. clear all unused drivers
+sudo apt-get remove --purge nvidia*
+sudo apt-get autoremove
+sudo apt-get install -f
+
+2. add nvidia latest source
+sudo add-apt-repository ppa:graphics-drivers/ppa
+
+3. to speed up, execute the following instruction
+sudo sed -i "s/ppa\.launchpad\.net/lanuchpad.moruy.cn/g" /etc/apt/sources.list.d/*.list
+sudo apt-get update
+
+4. check recommanded drivers
+ubuntu-drivers devices
+
+5. install recommanded driver
+sudo ubuntu-drivers autoinstall
+
+6. reboot and done!
+
+-- if login loop occurs, try enter plain text mode and uninstall all nvidia drivers and check the profile in /etc/profile and good luck! :)
+

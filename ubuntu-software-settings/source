@@ -1,0 +1,14 @@
+#deb cdrom:[Ubuntu 18.04.1 LTS _Bionic Beaver_ - Release amd64 (20180725)]/ bionic main restricted
+
+deb https://ipv6.mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb-src https://ipv6.mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+
+deb https://ipv6.mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb-src https://ipv6.mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+
+deb https://ipv6.mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src https://ipv6.mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+
+deb https://ipv6.mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src https://ipv6.mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+

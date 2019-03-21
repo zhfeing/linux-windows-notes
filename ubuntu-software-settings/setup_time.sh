@@ -1,0 +1,1 @@
+sudo hwclock --systohc --localtime
