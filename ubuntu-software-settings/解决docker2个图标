@@ -1,0 +1,2 @@
+xprop |grep WM_CLASS
+StartupWMClass=jetbrains-pycharm

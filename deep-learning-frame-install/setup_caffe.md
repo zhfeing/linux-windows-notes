@@ -78,8 +78,8 @@ PYTHON_LIB := /home/zhfeing/caffe_env/lib/python3.6/config-3.6m-x86_64-linux-gnu
 WITH_PYTHON_LAYER := 1
 
 # Whatever else you find you need goes here.
-INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
-LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib 
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial  /media/Programme/linux_program/protobuf-2.6.1/include
+LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib  /media/Programme/linux_program/protobuf-2.6.1/lib
 ```
 
 ## edit Makefile
