@@ -34,7 +34,7 @@ or cmake-gui
     run: “Generate”
 
 
-
+# when using cmake-gui the following parameters must be added beore first generate or they will never take effect
 PYTHON2(3)_EXECUTABLE = <path to python>
 PYTHON_INCLUDE_DIR = /usr/include/python<version>
 PYTHON_INCLUDE_DIR2 = /usr/include/x86_64-linux-gnu/python<version>
