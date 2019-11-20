@@ -1,0 +1,46 @@
+sudo apt install ffmpeg
+
+
+ffmpeg -i 01.flv
+
+输出大致为：
+  Duration: 00:01:10.21, start: 0.000000, bitrate: 284 kb/s
+    Stream #0.0: Video: h264, yuv420p, 512x288 [PAR 513:512 DAR 57:32], 252 kb/s, 15 tbr, 1k tbn, 30 tbc
+    Stream #0.1: Audio: aac, 44100 Hz, stereo, s16, 32 kb/s
+可以看到音频编码用的acc，所以需要看看ffmpeg是否支持acc的解码，命令为：
+
+ffmpeg -codecs | grep aac
+
+如果看到下面类似输出，表示支持
+DEA    aac             Advanced Audio Coding
+DEA中的D表示decoder，E表示encoder，A表示Audio Codec
+
+由于要转换成MP3格式的音频，所以就需要查看是否存在MP3编码器，命令为：
+
+ffmpeg -codecs | grep mp
+
+如果输出中存在如下信息即表示支持
+  EA    libmp3lame      libmp3lame MP3 (MPEG audio layer 3)
+
+DEA    mp2             MP2 (MPEG audio layer 2)
+注意：如果没有看到libmp3lame，就不能进行MP3格式的编码，但是可以使用MP2格式的编码，一个很奇怪的问题，我在一台机器上编译ffmpeg时候使用enable lame，安装ffmpeg还是不支持MP3编码，另外一台机器上就是好的。不过可以通过lame来把MP2格式的音频转换为MP3格式，所以就算ffmpeg在编译时候没有指定使用MP3编码器，也一样可以得到MP3格式的音频文件。
+
+有了上面的知识，现在就来说怎么从视频中获取音频
+
+1、先获取MP2编码的音频在使用lame来重新编码 
+ffmpeg -i 01.flv -f mp2 -vn t.mp3
+lame t.mp3 01.mp3
+
+-i 输入文件， -f 输出使用的编码格式  -vn 禁止视频输出   t.mp3 输出的文件名
+使用lame命令还可以在MP3文件中增加一些额外信息，更多信息可以使用 lame --help id3 查看
+
+2、一步到位直接使用MP3编码器 
+ffmpeg -i 01.flv -f mp3 -vn 01.mp3
+或
+ffmpeg -i 01.flv -acodec libmp3lame -vn 01.mp3
+另外使用mplayer和mencoder获取音频命令为：
+
+mencoder 01.flv -oac mp3lame -ovc lavc -o t.avi
+
+mplayer -dumpaudio -dumpfile 01.mp3 t.avi
+现在很多视频网站上的一个长视频都是分成很多小段的，如何把一个长视频音频提取到一个音频文件中，在linux中，借用cat命令就很容易实现。假设视频有三段，先使用上面提到的命令获取三个独立的音频文件01.mp3、02.mp3和03.mp3，合并的命令为：
