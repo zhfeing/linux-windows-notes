@@ -1,0 +1,16 @@
+--2019-08-20 11:06:04--  http://www.linuxidc.com/files/repo/google-chrome.list
+Resolving www.linuxidc.com (www.linuxidc.com)... 58.58.81.212, 113.107.238.213
+Connecting to www.linuxidc.com (www.linuxidc.com)|58.58.81.212|:80... failed: Connection timed out.
+Connecting to www.linuxidc.com (www.linuxidc.com)|113.107.238.213|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://www.linuxidc.com/files/repo/google-chrome.list [following]
+--2019-08-20 11:08:15--  https://www.linuxidc.com/files/repo/google-chrome.list
+Connecting to www.linuxidc.com (www.linuxidc.com)|113.107.238.213|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 131 [application/octet-stream]
+Saving to: ‘/etc/apt/sources.list.d/google-chrome.list.1’
+
+     0K                                                       100% 6.73M=0s
+
+2019-08-20 11:08:15 (6.73 MB/s) - ‘/etc/apt/sources.list.d/google-chrome.list.1’ saved [131/131]
+

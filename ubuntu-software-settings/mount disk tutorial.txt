@@ -1,4 +1,15 @@
 sudo gedit /etc/fstab
 e.g. /dev/sdb1 /media/C ntfs defaults 0 0
 
+/dev/nvme0n1: PTUUID="8e189c95-5bff-4534-a09e-e7e5f0ea470c" PTTYPE="gpt"
+/dev/nvme0n1p1: LABEL="M-fM-^AM-\"M-eM-$M-^M" UUID="889ABBBB9ABBA3DA" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="e20cb703-a882-44ce-94c5-c96a75d14ecc"
+/dev/nvme0n1p2: UUID="36BF-8172" TYPE="vfat" PARTLABEL="EFI system partition" PARTUUID="d201f254-36b2-4fbd-9c51-20b29c75654b"
+/dev/nvme0n1p3: PARTLABEL="Microsoft reserved partition" PARTUUID="fa6d958c-d133-46aa-8d04-9abaaa55c5d7"
+/dev/nvme0n1p4: UUID="3084CBCD84CB942E" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="c8f7db6f-a39f-4b88-b3c2-3a0729eae2a1"
+/dev/nvme0n1p5: UUID="ccb4b978-1bc4-457d-b106-71dcb703f56c" TYPE="swap" PARTUUID="fc46435e-4c01-4358-b65d-883e15b9e72c"
+/dev/nvme0n1p6: UUID="54F9-67FE" TYPE="vfat" PARTUUID="228ea864-cc8d-425f-a2bd-2083ee02495f"
+/dev/nvme0n1p7: UUID="f9131572-94dd-486b-ae1f-1ca0b6d0f555" TYPE="ext4" PARTUUID="26c7672d-a235-4063-b1b5-e2978920ceec"
+/dev/sda1: PARTLABEL="Microsoft reserved partition" PARTUUID="2679fc0e-bff9-4940-a911-f4fa5f2e2f57"
+/dev/sda2: LABEL="Data" UUID="D8D4DB5ED4DB3D86" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="365a3833-f653-4828-9783-1bcd1ea3b243"
+/dev/sda3: LABEL="Programme" UUID="94B4E8DDB4E8C33A" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="5b035c89-aeef-4c44-998e-b88703851fe9"
 
