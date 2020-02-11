@@ -1,0 +1,13 @@
+vscode pylint:
+
+pylint args:
+--generated-members=torch.*, cv2.*
+--disable=C,W0621
+
+
+* (C) convention, for programming standard violation
+* (R) refactor, for bad code smell
+* (W) warning, for python specific problems
+* (E) error, for much probably bugs in the code
+* (F) fatal, if an error occurred which prevented pylint from doing
+further processing.

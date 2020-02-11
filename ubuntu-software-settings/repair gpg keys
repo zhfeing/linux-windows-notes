@@ -1,0 +1,2 @@
+从https://mirrors.tuna.tsinghua.edu.cn/ubuntu/project/ 下载gpg签名文件 ubuntu-archive-keyring.gpg.sig 之后：
+sudo apt-key add ubuntu-archive-keyring.gpg.sig 即可

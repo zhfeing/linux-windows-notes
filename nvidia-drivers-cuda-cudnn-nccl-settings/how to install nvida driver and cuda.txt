@@ -1,6 +1,6 @@
 1. first disable security boot: 
 	sudo mokutil --enable-validation
-	È»ºóreboot
+	ç„¶åreboot
 2. setup the nvida 375 driver via "system//software & update"
 3. reboot, if there is no erro, then you can enjoy the nvida driver by enter
 	nvida-settings
@@ -15,7 +15,7 @@ and enter
 	sudo make
 	./deviceQuery
 8.if something wrong:
-	1)Ğ´Èëµ½ ~/.bashrc µÄÎ²²¿
+	1)å†™å…¥åˆ° ~/.bashrc çš„å°¾éƒ¨
 		export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
 		export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 	2)
@@ -30,64 +30,64 @@ and enter
 		sudo ldconfig
 9. set up cudnn
 	1)
-		sudo cp cudnn.h /usr/local/cuda/include/    #¸´ÖÆÍ·ÎÄ¼ş
+		sudo cp cudnn.h /usr/local/cuda/include/    #å¤åˆ¶å¤´æ–‡ä»¶
 	2)
-		sudo cp lib* /usr/local/cuda/lib64/    #¸´ÖÆ¶¯Ì¬Á´½Ó¿â
+		sudo cp lib* /usr/local/cuda/lib64/    #å¤åˆ¶åŠ¨æ€é“¾æ¥åº“
 		cd /usr/local/cuda/lib64/
-		sudo rm -rf libcudnn.so libcudnn.so.5    #É¾³ıÔ­ÓĞ¶¯Ì¬ÎÄ¼ş
-		sudo ln -s libcudnn.so.5.0.5 libcudnn.so.5  #Éú³ÉÈíÏÎ½Ó
-		sudo ln -s libcudnn.so.5 libcudnn.so      #Éú³ÉÈíÁ´½Ó
+		sudo rm -rf libcudnn.so libcudnn.so.5    #åˆ é™¤åŸæœ‰åŠ¨æ€æ–‡ä»¶
+		sudo ln -s libcudnn.so.5.0.5 libcudnn.so.5  #ç”Ÿæˆè½¯è¡”æ¥
+		sudo ln -s libcudnn.so.5 libcudnn.so      #ç”Ÿæˆè½¯é“¾æ¥
 
 ################################################################################################
 another way
-	cd ÏÂÔØ/ 
+	cd ä¸‹è½½/ 
 	tar zxvf cudnn-8.0-linux-x64-v5.1.tgz 
-½âÑ¹ÔÚÏÂÔØÄ¿Â¼ÏÂ²úÉúÒ»¸öcudaÄ¿Â¼ 
+è§£å‹åœ¨ä¸‹è½½ç›®å½•ä¸‹äº§ç”Ÿä¸€ä¸ªcudaç›®å½• 
 	cd cuda/include/ 
-	sudo cp cudnn.h /usr/local/cuda/include/ ¸´ÖÆÍ·ÎÄ¼ş 
-	cd ../lib64 ´ò¿ªlib64Ä¿Â¼ 
-	sudo cp lib* /usr/local/cuda/lib64/ ¸´ÖÆ¿âÎÄ¼ş 
-	sudo chmod a+r /usr/local/cuda/include/cudnn.h/usr/local/cuda/lib64/libcudnn*¸øËùÓĞÓÃ»§Ôö¼ÓÕâĞ©ÎÄ¼şµÄ¶ÁÈ¨ÏŞ 
+	sudo cp cudnn.h /usr/local/cuda/include/ å¤åˆ¶å¤´æ–‡ä»¶ 
+	cd ../lib64 æ‰“å¼€lib64ç›®å½• 
+	sudo cp lib* /usr/local/cuda/lib64/ å¤åˆ¶åº“æ–‡ä»¶ 
+	sudo chmod a+r /usr/local/cuda/include/cudnn.h/usr/local/cuda/lib64/libcudnn*ç»™æ‰€æœ‰ç”¨æˆ·å¢åŠ è¿™äº›æ–‡ä»¶çš„è¯»æƒé™ 
 
 
-½¨Á¢ÈíÁ´½Ó
+å»ºç«‹è½¯é“¾æ¥
 
-ÖÕ¶ËÊäÈë 
+ç»ˆç«¯è¾“å…¥ 
 	cd /usr/local/cuda/lib64/ 
 	sudo rm -rf libcudnn.so libcudnn.so.5 
 	sudo ln -s libcudnn.so.5.1.5 libcudnn.so.5 
 	sudo ln -s libcudnn.so.5 libcudnn.so 
-ÉèÖÃ»·¾³±äÁ¿£¬ÖÕ¶ËÊäÈë 
+è®¾ç½®ç¯å¢ƒå˜é‡ï¼Œç»ˆç«¯è¾“å…¥ 
 	sudo gedit /etc/profile 
-ÔÚÄ©Î²¼ÓÈë 
+åœ¨æœ«å°¾åŠ å…¥ 
 	PATH=/usr/local/cuda/bin:$PATH 
 	export PATH 
-±£´æºó£¬´´½¨Á´½ÓÎÄ¼ş 
+ä¿å­˜åï¼Œåˆ›å»ºé“¾æ¥æ–‡ä»¶ 
 	sudo vim /etc/ld.so.conf.d/cuda.conf 
-°´a½øÈë²åÈëÄ£Ê½£¬Ôö¼ÓÏÂÃæÒ»ĞĞ 
+æŒ‰aè¿›å…¥æ’å…¥æ¨¡å¼ï¼Œå¢åŠ ä¸‹é¢ä¸€è¡Œ 
 	/usr/local/cuda/lib64 
-°´escÍË³ö²åÈëÄ£Ê½£¬°´:wq±£´æÍË³ö 
-×îºóÔÚÖÕ¶ËÊäÈësudo ldconfigÊ¹Á´½ÓÉúĞ§ 
+æŒ‰escé€€å‡ºæ’å…¥æ¨¡å¼ï¼ŒæŒ‰:wqä¿å­˜é€€å‡º 
+æœ€ååœ¨ç»ˆç«¯è¾“å…¥sudo ldconfigä½¿é“¾æ¥ç”Ÿæ•ˆ 
 
 
-cuda Samples²âÊÔ
+cuda Samplesæµ‹è¯•
 
-´ò¿ªCUDA 8.0 SamplesÄ¬ÈÏ°²×°Â·¾¶£¬ÖÕ¶ËÊäÈë 
-	cd /home/pawn/NVIDIA_CUDA-8.0_Samples £¨pawnÊÇÎÒµÄÓÃ»§Ãû£© 
-	sudo make all -j4 £¨4ºË£© 
-³öÏÖ¡°unsupported GNU version! gcc versions later than 5.3 are not supported!¡±µÄ´íÎó£¬ÕâÊÇÓÉÓÚGCC°æ±¾¹ı¸ß£¬ÔÚÖÕ¶ËÊäÈë 
+æ‰“å¼€CUDA 8.0 Samplesé»˜è®¤å®‰è£…è·¯å¾„ï¼Œç»ˆç«¯è¾“å…¥ 
+	cd /home/pawn/NVIDIA_CUDA-8.0_Samples ï¼ˆpawnæ˜¯æˆ‘çš„ç”¨æˆ·åï¼‰ 
+	sudo make all -j4 ï¼ˆ4æ ¸ï¼‰ 
+å‡ºç°â€œunsupported GNU version! gcc versions later than 5.3 are not supported!â€çš„é”™è¯¯ï¼Œè¿™æ˜¯ç”±äºGCCç‰ˆæœ¬è¿‡é«˜ï¼Œåœ¨ç»ˆç«¯è¾“å…¥ 
 	cd /usr/local/cuda-8.0/include 
 	sudo cp host_config.h host_config.h.bak 
 	sudo gedit host_config.h 
-ctrl+fÑ°ÕÒÓĞ¡°5.3¡±µÄµØ·½£¬Ö»ÓĞÒ»´¦£¬ÈçÏÂ 
+ctrl+få¯»æ‰¾æœ‰â€œ5.3â€çš„åœ°æ–¹ï¼Œåªæœ‰ä¸€å¤„ï¼Œå¦‚ä¸‹ 
 # if __GNUC__ > 5 || (__GNUC__ == 5 && __GNUC_MINOR__ > 3) 
 #error -- unsupported GNU version! gcc versions later than 5.3 are not supported! 
-½«Á½¸ö5¸Ä³É6£¬¼´ 
+å°†ä¸¤ä¸ª5æ”¹æˆ6ï¼Œå³ 
 #if __GNUC__ > 6 || (__GNUC__ == 6 && __GNUC_MINOR__ > 3) 
-±£´æÍË³ö£¬¼ÌĞøÔÚÖÕ¶ËÊäÈë 
-cd /home/pawn/NVIDIA_CUDA-8.0_Samples £¨pawnÊÇÎÒµÄÓÃ»§Ãû£© 
-	sudo make all -j4 £¨4ºË£© 
-Íê³Éºó¼ÌĞøÏòÖÕ¶ËÊäÈë 
+ä¿å­˜é€€å‡ºï¼Œç»§ç»­åœ¨ç»ˆç«¯è¾“å…¥ 
+cd /home/pawn/NVIDIA_CUDA-8.0_Samples ï¼ˆpawnæ˜¯æˆ‘çš„ç”¨æˆ·åï¼‰ 
+	sudo make all -j4 ï¼ˆ4æ ¸ï¼‰ 
+å®Œæˆåç»§ç»­å‘ç»ˆç«¯è¾“å…¥ 
 	cd bin/x86_64/linux/release 
 	./deviceQuery 
 
